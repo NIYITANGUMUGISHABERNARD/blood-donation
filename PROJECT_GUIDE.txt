@@ -1,0 +1,143 @@
+BLOOD DONATION MANAGEMENT SYSTEM
+================================
+
+SYSTEM OVERVIEW
+---------------
+This system helps manage blood donations, blood requests, blood inventory,
+users, staff operations, and administrative reports.
+
+The system has four user roles:
+
+1. Admin
+   - Creates and manages Staff accounts.
+   - Manages users and assigns roles.
+   - Deletes user accounts when necessary.
+   - Views system reports and operational activity.
+   - Does not approve donations or blood requests.
+
+2. Staff
+   - Reviews pending blood donations.
+   - Approves or rejects donations.
+   - Reviews pending blood requests.
+   - Approves or rejects blood requests.
+   - Monitors blood inventory.
+   - Approved donations increase inventory.
+   - Approved blood requests reduce inventory when enough blood is available.
+
+3. Donor
+   - Registers and logs into the system.
+   - Submits blood donations.
+   - Views personal donation history and approval status.
+   - Views available blood inventory.
+
+4. Recipient
+   - Registers and logs into the system.
+   - Submits requests for blood.
+   - Views personal request history and approval status.
+   - Views available blood inventory.
+
+
+SYSTEM WORKFLOW
+---------------
+1. A Donor registers and submits a blood donation.
+2. The donation is created with a Pending status.
+3. Staff reviews and approves or rejects the donation.
+4. When approved, the donated quantity is added to blood inventory.
+5. A Recipient submits a blood request.
+6. Staff checks whether enough blood is available.
+7. When approved, the requested quantity is deducted from inventory.
+8. Admin manages users and reviews system reports.
+
+
+DEMO LOGIN CREDENTIALS
+----------------------
+Admin
+Email: admin@example.com
+Password: admin123
+
+Staff
+Email: staff@example.com
+Password: staff123
+
+Donor
+Email: donor@example.com
+Password: donor123
+
+Second Donor
+Email: donor.two@example.com
+Password: donor123
+
+Recipient
+Email: recipient@example.com
+Password: recipient123
+
+IMPORTANT: Change all demo passwords before using this system in production.
+
+
+INSTALLATION USING XAMPP
+------------------------
+Requirements:
+- XAMPP with Apache and MySQL
+- PHP 7.4 or newer
+- A modern web browser
+
+Installation steps:
+
+1. Extract the project folder into:
+   C:\xampp\htdocs\blood-donation
+
+2. Start Apache and MySQL from the XAMPP Control Panel.
+
+3. Open phpMyAdmin:
+   http://localhost/phpmyadmin
+
+4. Import the following file first:
+   db/schema.sql
+
+5. Import the demo data after the schema:
+   db/seed.sql
+
+6. Open the application:
+   http://localhost/blood-donation/
+
+The default database configuration is:
+Database name: blood_donation_db
+Database user: root
+Database password: empty
+Database host: localhost
+
+If your MySQL configuration is different, update db.php.
+
+
+MAIN PAGES
+----------
+index.php          - Public home page
+login.php          - User login
+register.php       - Donor and Recipient registration
+dashboard.php      - Role-based dashboard
+donate.php         - Submit a blood donation
+requests.php       - Submit a blood request
+inventory.php      - View blood inventory
+admin_actions.php  - Staff blood operations
+admin_users.php    - Admin user and Staff management
+reports.php        - Admin reports
+
+
+SECURITY NOTES
+--------------
+- Passwords are stored as secure hashes.
+- Admin and Staff accounts cannot be created through public registration.
+- Only Admin can create Staff accounts.
+- Pages check the logged-in user's role before granting access.
+- Demo credentials are provided for testing only.
+
+
+QUICK TEST
+----------
+1. Log in as Donor and submit a donation.
+2. Log out and log in as Staff.
+3. Approve the pending donation and check inventory.
+4. Log in as Recipient and submit a blood request.
+5. Log in as Staff and approve the request.
+6. Log in as Admin to manage users and view reports.
+
